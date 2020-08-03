@@ -133,12 +133,16 @@ AlertDialog waitingdialog;
                         });
                 AlertDialog dialog = builder.create();
                 dialog.show();
-
+                Intent intent = new Intent(scanner.this,retrieve.class);
+                intent.putExtra("SCANNED",barcode.getRawValue());
+                startActivity(intent);
 
             }
                 break;
             case FirebaseVisionBarcode.TYPE_URL: {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(barcode.getRawValue()));
+               // Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(barcode.getRawValue()));
+                Intent intent = new Intent(scanner.this,retrieve.class);
+                intent.putExtra("SCANNED",barcode.getRawValue());
                 startActivity(intent);
             }
             break;
